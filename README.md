@@ -2,96 +2,163 @@
 
 
 
-# [Project Name] 🎯
+**Dead Pixel Forensics** 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Srishti
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 1: Shreya Suja Sukumaran - Jyothi Engineering College(Autonomous)
+- Member 2: Ayisha Begam - Jyothi Engineering College(Autonomous)
 
 ### Project Description
-[2-3 lines about what your project does]
+The project basically analyses a screen display that has been showing pink/blue/green line issues, our system counts the total number of lines, their intersections, percentage it can be repaired etc.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Difficulty in counting and identifying the total number of lines and colors of lines
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+The system upon taking the input image of a damaged screen display counts the total number of lines, lines of each color, which is in majority, etc.
 
 ## Technical Details
-### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+### Software
+Languages
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+Python 3.11+ — backend processing, computer vision pipeline
+JavaScript (ES2022) — frontend application logic
+CSS3 — styling and animations
+HTML5 — markup
+Frameworks
 
-### Implementation
-For Software:
-# Installation
-[commands]
+FastAPI ≥0.110 — REST API server (Python)
+React ^19 — frontend UI framework
+Vite ^8.3 — frontend build tool and dev server
 
-# Run
-[commands]
+# Screenshots
+<img width="1920" height="1020" alt="Screenshot 2026-09-12 031638" src="https://github.com/user-attachments/assets/c0666e55-5e3c-4ec2-abea-92b4e60717d2" />
+*Welcome page of the website*
 
-### Project Documentation
-For Software:
+<img width="1920" height="1020" alt="Screenshot 2026-09-12 030936" src="https://github.com/user-attachments/assets/1a4ac63e-8f7d-4cc3-a8ae-615c3bbcf59c" />
+*Page to upload image*
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+<img width="1920" height="1020" alt="Screenshot 2026-09-12 031002" src="https://github.com/user-attachments/assets/99f70f56-e4e9-41cf-a12c-26e9662110a9" />
+*page after image analysis*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1920" height="1020" alt="Screenshot 2026-09-12 031012" src="https://github.com/user-attachments/assets/0d8a55f8-dcce-4b81-ad93-87474aeaed8b" />
+*result analysis part 1*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1920" height="1020" alt="Screenshot 2026-09-12 031019" src="https://github.com/user-attachments/assets/50009a9d-b32c-43ab-a30e-b73bccf32db9" />
+*result analysis part 2*
+
+<img width="1920" height="1020" alt="Screenshot 2026-09-12 031032" src="https://github.com/user-attachments/assets/d66357fd-95f0-4609-9304-d55afcd46ed4" />
+*result analysis part 3*
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
+                 SCREEN DISPLAY FORENSICS — SYSTEM WORKFLOW
+                                   │
+                                   ▼
+┌──────────────────────────────────────────────────────────────┐
+│ 1. USER UPLOAD                                                │
+│    React + Vite Frontend                                      │
+│    • User uploads broken phone screen photo                   │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               │ POST /api/analyze
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│ 2. FASTAPI BACKEND                                            │
+│    Port: 8000                                                 │
+│    • Receives uploaded image                                  │
+│    • Sends image to Computer Vision Pipeline                  │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌═══════════════════════════════════════════════════════════════┐
+║ 3. COMPUTER VISION PIPELINE                                  ║
+║                                                               ║
+║  ┌────────────────────┐                                       ║
+║  │ Stage 1            │                                       ║
+║  │ PREPROCESSING      │                                       ║
+║  │ • Resize           │                                       ║
+║  │ • Denoise          │                                       ║
+║  │ • Colour conversion│                                       ║
+║  └─────────┬──────────┘                                       ║
+║            ▼                                                  ║
+║  ┌────────────────────┐                                       ║
+║  │ Stage 2            │                                       ║
+║  │ LINE DETECTION     │                                       ║
+║  │ • Hough Transform  │                                       ║
+║  │ • Saturated-colour │                                       ║
+║  │   pass             │                                       ║
+║  │ • Canny fallback   │                                       ║
+║  └─────────┬──────────┘                                       ║
+║            ▼                                                  ║
+║  ┌────────────────────┐                                       ║
+║  │ Stage 3            │                                       ║
+║  │ PER-LINE ANALYSIS  │                                       ║
+║  │ • Colour           │                                       ║
+║  │ • Length           │                                       ║
+║  │ • Width            │                                       ║
+║  │ • Orientation      │                                       ║
+║  │ • Screen region    │                                       ║
+║  └─────────┬──────────┘                                       ║
+║            ▼                                                  ║
+║  ┌────────────────────┐                                       ║
+║  │ Stage 4            │                                       ║
+║  │ PIXEL ANALYSIS     │                                       ║
+║  │ • Damage mask      │                                       ║
+║  │ • 9-zone region map│                                       ║
+║  └─────────┬──────────┘                                       ║
+╚════════════╪══════════════════════════════════════════════════╝
+             │
+             ▼
+┌──────────────────────────────────────────────────────────────┐
+│ 4. METRICS ENGINE                                             │
+│                                                               │
+│    • Repairability Index                                     │
+│    • Symmetry Score                                           │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│ 5. OUTPUT GENERATION                                         │
+│                                                               │
+│    • JSON Results                                             │
+│    • Annotated PNG                                            │
+│    • PDF Report                                               │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│ 6. DASHBOARD                                                  │
+│                                                               │
+│    • Results returned to React + Vite                         │
+│    • Interactive display                                      │
+└──────────────────────────────────────────────────────────────┘
+*The workflow starts with a damaged screen image uploaded through the React + Vite frontend. The image is analyzed by the FastAPI backend using four computer vision stages: preprocessing, line detection, per-line analysis, and pixel analysis. The extracted results are used to calculate the Repairability Index and Symmetry Score, which are then generated as JSON, annotated PNG, and PDF outputs for display on the dashboard.*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
+<video src="C:\Users\ayshu\OneDrive\Videos\Screen Recordings\Screen Recording 2026-09-12 032050.mp4" controls></video>
+*The Video Demonstrates the working of the website Dead Display Forensics*
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Shreya Suja Sukumaran: Frontend & UI Development
+
+Developed the React + Vite frontend.
+Designed the image upload interface and interactive dashboard.
+Integrated the frontend with the FastAPI backend using the /api/analyze API.
+Displayed analysis results, damage information, and generated reports.
+
+- Ayisha Begam: Backend & Computer Vision
+
+Developed the FastAPI backend and image-analysis API.
+Implemented the computer vision pipeline for screen damage detection.
+Worked on preprocessing, line detection, per-line analysis, and pixel analysis.
+Developed the Metrics Engine to calculate the Repairability Index and Symmetry Score.
+Implemented generation of JSON results, annotated images, and PDF reports.
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
