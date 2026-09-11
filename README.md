@@ -56,92 +56,14 @@ Vite ^8.3 — frontend build tool and dev server
 *result analysis part 3*
 
 # Diagrams
-                 SCREEN DISPLAY FORENSICS — SYSTEM WORKFLOW
-                                   │
-                                   ▼
-┌──────────────────────────────────────────────────────────────┐
-│ 1. USER UPLOAD                                                │
-│    React + Vite Frontend                                      │
-│    • User uploads broken phone screen photo                   │
-└──────────────────────────────┬───────────────────────────────┘
-                               │
-                               │ POST /api/analyze
-                               ▼
-┌──────────────────────────────────────────────────────────────┐
-│ 2. FASTAPI BACKEND                                            │
-│    Port: 8000                                                 │
-│    • Receives uploaded image                                  │
-│    • Sends image to Computer Vision Pipeline                  │
-└──────────────────────────────┬───────────────────────────────┘
-                               │
-                               ▼
-┌═══════════════════════════════════════════════════════════════┐
-║ 3. COMPUTER VISION PIPELINE                                  ║
-║                                                               ║
-║  ┌────────────────────┐                                       ║
-║  │ Stage 1            │                                       ║
-║  │ PREPROCESSING      │                                       ║
-║  │ • Resize           │                                       ║
-║  │ • Denoise          │                                       ║
-║  │ • Colour conversion│                                       ║
-║  └─────────┬──────────┘                                       ║
-║            ▼                                                  ║
-║  ┌────────────────────┐                                       ║
-║  │ Stage 2            │                                       ║
-║  │ LINE DETECTION     │                                       ║
-║  │ • Hough Transform  │                                       ║
-║  │ • Saturated-colour │                                       ║
-║  │   pass             │                                       ║
-║  │ • Canny fallback   │                                       ║
-║  └─────────┬──────────┘                                       ║
-║            ▼                                                  ║
-║  ┌────────────────────┐                                       ║
-║  │ Stage 3            │                                       ║
-║  │ PER-LINE ANALYSIS  │                                       ║
-║  │ • Colour           │                                       ║
-║  │ • Length           │                                       ║
-║  │ • Width            │                                       ║
-║  │ • Orientation      │                                       ║
-║  │ • Screen region    │                                       ║
-║  └─────────┬──────────┘                                       ║
-║            ▼                                                  ║
-║  ┌────────────────────┐                                       ║
-║  │ Stage 4            │                                       ║
-║  │ PIXEL ANALYSIS     │                                       ║
-║  │ • Damage mask      │                                       ║
-║  │ • 9-zone region map│                                       ║
-║  └─────────┬──────────┘                                       ║
-╚════════════╪══════════════════════════════════════════════════╝
-             │
-             ▼
-┌──────────────────────────────────────────────────────────────┐
-│ 4. METRICS ENGINE                                             │
-│                                                               │
-│    • Repairability Index                                     │
-│    • Symmetry Score                                           │
-└──────────────────────────────┬───────────────────────────────┘
-                               │
-                               ▼
-┌──────────────────────────────────────────────────────────────┐
-│ 5. OUTPUT GENERATION                                         │
-│                                                               │
-│    • JSON Results                                             │
-│    • Annotated PNG                                            │
-│    • PDF Report                                               │
-└──────────────────────────────┬───────────────────────────────┘
-                               │
-                               ▼
-┌──────────────────────────────────────────────────────────────┐
-│ 6. DASHBOARD                                                  │
-│                                                               │
-│    • Results returned to React + Vite                         │
-│    • Interactive display                                      │
-└──────────────────────────────────────────────────────────────┘
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/6e040a24-9b4a-42ce-a34b-5490bd30c0de" />
+
 *The workflow starts with a damaged screen image uploaded through the React + Vite frontend. The image is analyzed by the FastAPI backend using four computer vision stages: preprocessing, line detection, per-line analysis, and pixel analysis. The extracted results are used to calculate the Repairability Index and Symmetry Score, which are then generated as JSON, annotated PNG, and PDF outputs for display on the dashboard.*
 
 ### Project Demo
 # Video
-<video src="C:\Users\ayshu\OneDrive\Videos\Screen Recordings\Screen Recording 2026-09-12 032050.mp4" controls></video>
+<video src="
+controls></video>
 *The Video Demonstrates the working of the website Dead Display Forensics*
 
 ## Team Contributions
