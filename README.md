@@ -62,9 +62,16 @@ Vite ^8.3 — frontend build tool and dev server
 
 ### Project Demo
 # Video
-<video src="
-controls></video>
-*The Video Demonstrates the working of the website Dead Display Forensics*
+
+
+https://github.com/user-attachments/assets/2c2d16d8-cd79-42e3-a5c9-3d7301f45600
+
+
+
+
+
+
+
 
 ## Team Contributions
 - Shreya Suja Sukumaran: Frontend & UI Development
