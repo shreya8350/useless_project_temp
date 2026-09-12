@@ -1,99 +1,208 @@
-<img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
+# DEAD PIXEL FORENSICS 🔬📱
 
+> *"Because someone had to count the lines."*
 
+A complete, functional, highly polished web application built for **Tinker Useless Project 3.0**.
 
-**Dead Pixel Forensics** 🎯
-
-
-## Basic Details
-### Team Name: Srishti
-
-
-### Team Members
-- Member 1: Shreya Suja Sukumaran - Jyothi Engineering College(Autonomous)
-- Member 2: Ayisha Begam - Jyothi Engineering College(Autonomous)
-
-### Project Description
-The project basically analyses a screen display that has been showing pink/blue/green line issues, our system counts the total number of lines, their intersections, percentage it can be repaired etc.
-
-### The Problem (that doesn't exist)
-Difficulty in counting and identifying the total number of lines and colors of lines
-
-### The Solution (that nobody asked for)
-The system upon taking the input image of a damaged screen display counts the total number of lines, lines of each color, which is in majority, etc.
-
-## Technical Details
-### Software
-Languages
-
-Python 3.11+ — backend processing, computer vision pipeline
-JavaScript (ES2022) — frontend application logic
-CSS3 — styling and animations
-HTML5 — markup
-Frameworks
-
-FastAPI ≥0.110 — REST API server (Python)
-React ^19 — frontend UI framework
-Vite ^8.3 — frontend build tool and dev server
-
-# Screenshots
-<img width="1920" height="1020" alt="Screenshot 2026-09-12 031638" src="https://github.com/user-attachments/assets/c0666e55-5e3c-4ec2-abea-92b4e60717d2" />
-*Welcome page of the website*
-
-<img width="1920" height="1020" alt="Screenshot 2026-09-12 030936" src="https://github.com/user-attachments/assets/1a4ac63e-8f7d-4cc3-a8ae-615c3bbcf59c" />
-*Page to upload image*
-
-<img width="1920" height="1020" alt="Screenshot 2026-09-12 031002" src="https://github.com/user-attachments/assets/99f70f56-e4e9-41cf-a12c-26e9662110a9" />
-*page after image analysis*
-
-<img width="1920" height="1020" alt="Screenshot 2026-09-12 031012" src="https://github.com/user-attachments/assets/0d8a55f8-dcce-4b81-ad93-87474aeaed8b" />
-*result analysis part 1*
-
-<img width="1920" height="1020" alt="Screenshot 2026-09-12 031019" src="https://github.com/user-attachments/assets/50009a9d-b32c-43ab-a30e-b73bccf32db9" />
-*result analysis part 2*
-
-<img width="1920" height="1020" alt="Screenshot 2026-09-12 031032" src="https://github.com/user-attachments/assets/d66357fd-95f0-4609-9304-d55afcd46ed4" />
-*result analysis part 3*
-
-# Diagrams
-<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/6e040a24-9b4a-42ce-a34b-5490bd30c0de" />
-
-*The workflow starts with a damaged screen image uploaded through the React + Vite frontend. The image is analyzed by the FastAPI backend using four computer vision stages: preprocessing, line detection, per-line analysis, and pixel analysis. The extracted results are used to calculate the Repairability Index and Symmetry Score, which are then generated as JSON, annotated PNG, and PDF outputs for display on the dashboard.*
-
-### Project Demo
-# Video
-
-
-https://github.com/user-attachments/assets/2c2d16d8-cd79-42e3-a5c9-3d7301f45600
-
-
-
-
-
-
-
-
-## Team Contributions
-- Shreya Suja Sukumaran: Frontend & UI Development
-
-Developed the React + Vite frontend.
-Designed the image upload interface and interactive dashboard.
-Integrated the frontend with the FastAPI backend using the /api/analyze API.
-Displayed analysis results, damage information, and generated reports.
-
-- Ayisha Begam: Backend & Computer Vision
-
-Developed the FastAPI backend and image-analysis API.
-Implemented the computer vision pipeline for screen damage detection.
-Worked on preprocessing, line detection, per-line analysis, and pixel analysis.
-Developed the Metrics Engine to calculate the Repairability Index and Symmetry Score.
-Implemented generation of JSON results, annotated images, and PDF reports.
+**Dead Pixel Forensics** is an interactive Computer Vision-based forensic analytics dashboard that transforms broken-display images into a detailed dataset of geometric, color, spatial, and pixel-level abnormalities. It visualizes them through interactive charts and heatmaps, and generates intentionally useless but accurately derived metrics and reports.
 
 ---
-Made with ❤️ at TinkerHub Useless Projects 
 
-![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
-![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
+## 🌟 Key Features
 
+1. **Digital Forensic Dashboard**: Designed like a high-tech forensic lab dashboard featuring glassmorphism, dark mode aesthetics, dynamic animations, and interactive visualizations.
+2. **Real Computer Vision Pipeline**:
+   - **Line Detection & Classification**: Hough Line Transform & Contour analysis classify lines into Horizontal, Vertical, Diagonal, Curved, and Irregular.
+   - **Line Measurements**: Calculates length, width, angle, brightness, intensity, screen percentage, center distance, nearest line proximity, and intersection count.
+   - **Color Analysis**: Samples RGB/HSV color spaces across 12 distinct color categories.
+   - **Pixel Cluster Analysis**: Detects dead/stuck pixel clusters, isolated pixels, and damage areas using Otsu thresholding, Canny edge detection, and morphological operations.
+   - **3×3 Screen Region Analysis**: Divides the screen into 9 equal quadrants to map damage density, dominant colors, and line counts per zone.
+   - **Curved & Parallel Line Analysis**: Fits curves, calculates curvature and turning points, and groups parallel lines into organized damage sets.
+   - **Intersection Analysis**: Identifies multi-line intersection coordinates and angles ("The Intersection Crisis").
+3. **Heatmaps & Image Overlays**:
+   - Interactive overlay toggles: Original Image, Annotated Line Detection Overlay, Damage Mask Overlay.
+   - Switchable heatmaps: Damage Heatmap, Line Density Heatmap, Intersection Heatmap, Pixel Cluster Heatmap.
+4. **Rich Data Visualization**:
+   - 4 Interactive Donut/Pie Charts (Orientation, Color Distribution, Damage vs Unaffected Area, Pixel Cluster Types).
+   - 8 Interactive Bar Charts (Lines by Color, Total Length by Color, Damage by Region, Orientation, Cluster Sizes, Top 10 Longest, Top 10 Thickest, Intersections by Region).
+   - 4 Histograms (Line Width, Line Length, Angle, Pixel Intensity).
+   - 3 Scatter Plots (Length vs Width, Length vs Brightness, Width vs Intensity).
+5. **Custom Useless Metrics & Gamification**:
+   - **Uselessness Score™ (0–100)**: Deterministic weighted metric based on line density, color diversity, orientation entropy, intersection density, curvature, cluster complexity, and spatial irregularity.
+   - **Display Chaos Index™ (0–100)**: Quantifies structural randomness and complexity.
+   - **Symmetry Score (0–100%)**: Measures horizontal, vertical, and radial symmetry of damage.
+   - **Breakage Level™ (1–10)**: Categorizes severity with entertaining descriptors ("1 — Barely broken", "8 — Extremely broken", "10 — Congratulations").
+   - **Display Personality**: Algorithmically classifies screen into profiles like *THE BARCODE*, *THE RAINBOW*, *THE SPIDER*, *THE GRID*, *THE CHAOS MONSTER*, *THE MINIMALIST*, or *THE ABSTRACT ARTIST*.
+   - **The Useless Awards™**: Awards trophies for 🏆 Longest Line, 🏆 Thickest Line, 🏆 Thinnest Line, 🏆 Loneliest Line, 🏆 Most Social Line, 🏆 Most Dramatic Color, 🏆 Most Popular Angle, 🏆 Most Damaged Zone, 🏆 Most Chaotic Region.
+   - **Interactive Line Explorer**: Sortable, searchable forensic table linked directly to image overlay highlights and zoom stats.
+   - **Line Social Network**: Node-graph representation ("THE SOCIAL LIFE OF BROKEN PIXELS").
+   - **Display DNA™**: Generates a unique visual fingerprint ID (e.g., `DPF-8A42-91`) and barcode graphic.
+6. **Uselessness Battle (Compare Mode)**: Compare two broken display images side-by-side to objectively crown the more useless display.
+7. **Downloadable Forensic PDF Report**: Automatically generates a complete multi-page PDF forensic report using ReportLab.
+8. **Demo Mode**: Built-in sample broken screens for instant evaluation during competition judging.
 
+---
 
+## 🏗️ Architecture & Project Structure
+
+```
+dead-pixel-forensics/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/       # Animated counters, gauges, DNA, awards, explorer, network
+│   │   ├── pages/            # LandingPage, UploadPage, DashboardPage, ComparePage
+│   │   ├── charts/           # Donut, Bar, Histogram, Scatter charts (Recharts)
+│   │   ├── overlays/         # Image overlays, heatmaps, 3x3 region grid
+│   │   ├── services/         # API client & endpoints
+│   │   ├── utils/            # Formatting helpers
+│   │   ├── App.jsx           # Routing & global theme
+│   │   └── App.css           # Glassmorphism & forensic styling
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── backend/
+│   ├── main.py               # FastAPI application entrypoint
+│   ├── requirements.txt      # Python dependencies
+│   │
+│   ├── api/
+│   │   ├── analyzer.py       # Main CV orchestration & data assembly
+│   │   └── routes.py         # REST API endpoints (/analyze, /compare, /report, /demo)
+│   │
+│   ├── cv/                   # Modular OpenCV & Computer Vision engines
+│   │   ├── preprocessing.py
+│   │   ├── line_detection.py
+│   │   ├── color_analysis.py
+│   │   ├── pixel_analysis.py
+│   │   ├── region_analysis.py
+│   │   ├── intersection_analysis.py
+│   │   ├── curve_analysis.py
+│   │   └── spatial_analysis.py
+│   │
+│   ├── metrics/              # Custom deterministic metric engines
+│   │   ├── uselessness.py
+│   │   ├── chaos.py
+│   │   ├── symmetry.py
+│   │   ├── personality.py
+│   │   ├── awards.py
+│   │   └── display_dna.py
+│   │
+│   ├── reports/
+│   │   └── report_generator.py # ReportLab PDF generator
+│   │
+│   └── utils/                # Base64, Math, Image helpers
+│
+├── demo_images/              # Built-in synthetic demo samples
+├── uploads/                  # Temporary image uploads
+├── outputs/                  # Analysis JSON & PDF reports
+├── run_backend.bat           # Windows quick-start script for backend
+├── run_frontend.bat          # Windows quick-start script for frontend
+└── README.md
+```
+
+---
+
+## 🛠️ Technology Stack
+
+- **Frontend**: React 19 + Vite, Framer Motion, Recharts, Axios, CSS3 (Glassmorphism & Dark Mode).
+- **Backend**: Python 3.13 + FastAPI, Uvicorn, Pydantic.
+- **Computer Vision & Processing**: OpenCV (`opencv-python-headless`), NumPy, SciPy, Pandas, Pillow.
+- **Reporting & Visualization**: ReportLab (PDF), Plotly, Matplotlib.
+
+---
+
+## 🚀 How to Run Locally
+
+### Prerequisites
+- Python 3.10+
+- Node.js 18+ & npm
+
+### Option A: Using Quick-Start Scripts (Windows)
+
+1. **Start Backend**:
+   Double click `run_backend.bat` or run:
+   ```cmd
+   run_backend.bat
+   ```
+   *The backend starts at `http://127.0.0.1:8000`.*
+
+2. **Start Frontend**:
+   Double click `run_frontend.bat` or run:
+   ```cmd
+   run_frontend.bat
+   ```
+   *The frontend starts at `http://localhost:5173` (or 5174).*
+
+---
+
+### Option B: Manual Command Setup
+
+#### 1. Setup Backend
+
+```bash
+# Navigate to project root
+cd uselessproject
+
+# Activate virtual environment
+venv\Scripts\activate
+
+# Install requirements
+pip install -r backend/requirements.txt
+
+# Launch FastAPI server
+python -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+#### 2. Setup Frontend
+
+```bash
+# Navigate to frontend folder
+cd frontend
+
+# Install node packages (if needed)
+npm install
+
+# Launch Vite dev server
+npm run dev
+```
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/health` | API health check |
+| `POST` | `/api/analyze` | Upload image & return complete forensic analysis JSON |
+| `POST` | `/api/compare` | Upload two images and return side-by-side comparison & winner |
+| `GET` | `/api/analysis/{id}` | Retrieve cached analysis JSON by ID |
+| `GET` | `/api/report/{id}` | Generate and download forensic PDF report |
+| `GET` | `/api/demo-list` | List available demo sample images |
+| `GET` | `/api/demo/{sample}` | Run instant analysis on a demo sample image |
+
+---
+
+## 📐 Custom Metric Formulas
+
+### Uselessness Score™ (0–100)
+$$\text{Uselessness Score} = \text{Clamp}\left( \sum_{i=1}^8 w_i \cdot C_i, 0, 100 \right)$$
+Where components $C_i$ represent normalized:
+- Line Density ($20\%$)
+- Color Diversity ($15\%$)
+- Orientation Entropy ($15\%$)
+- Intersection Density ($15\%$)
+- Damage Complexity ($15\%$)
+- Curvature ($10\%$)
+- Cluster Complexity ($5\%$)
+- Spatial Irregularity ($5\%$)
+
+---
+
+## ⚠️ Scientific Disclaimer
+
+> **Image-Based Analysis Disclaimer**: This application analyzes visual pixel patterns, contrast anomalies, and geometric lines present within uploaded digital images. It is an image-based visual analysis tool and does not replace hardware diagnostic tools.
+
+---
+
+*Dead Pixel Forensics — Built for Tinker Useless Project 3.0.*
